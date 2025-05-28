@@ -8,11 +8,16 @@
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.profitnotes.controller.MainController">
 
   <Label text="Курс:" fx:id="exchangeRateLabel"/>
+
   <TextArea fx:id="noteTextArea" promptText="Кількість +"/>
   <TextField fx:id="usdtField" promptText="Сума в USDT"/>
   <DatePicker fx:id="datePicker" promptText="Оберіть дату"/>
-  <Button fx:id="addButton" text="Додати" onAction="#onAddClicked"/>
-  <Button text="Видалити вибране" onAction="#onDeleteClicked"/>
+
+  <HBox spacing="10">
+    <Button fx:id="addButton" text="Додати" onAction="#onAddClicked"/>
+    <Button text="Видалити вибране" onAction="#onDeleteClicked"/>
+  </HBox>
+
   <TableView fx:id="notesTable">
     <columns>
       <TableColumn fx:id="indexColumn" text="День"/>
