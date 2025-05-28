@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.profitnotes.controller.MainController">
+
+  <Label text="Курс:" fx:id="exchangeRateLabel"/>
+  <TextArea fx:id="noteTextArea" promptText="Кількість +"/>
+  <TextField fx:id="usdtField" promptText="Сума в USDT"/>
+  <DatePicker fx:id="datePicker" promptText="Оберіть дату"/>
+  <Button fx:id="addButton" text="Додати" onAction="#onAddClicked"/>
+  <Button text="Видалити вибране" onAction="#onDeleteClicked"/>
+  <TableView fx:id="notesTable">
+    <columns>
+      <TableColumn fx:id="textColumn" text="Кількість +"/>
+      <TableColumn fx:id="usdtColumn" text="USDT"/>
+      <TableColumn fx:id="uahColumn" text="UAH"/>
+      <TableColumn fx:id="dateColumn" text="Дата"/>
+    </columns>
+  </TableView>
+</VBox>
