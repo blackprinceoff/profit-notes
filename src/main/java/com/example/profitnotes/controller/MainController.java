@@ -3,6 +3,7 @@ package com.example.profitnotes.controller;
 import com.example.profitnotes.model.ExchangeRateService;
 import com.example.profitnotes.model.Note;
 import com.example.profitnotes.util.NoteStorage;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class MainController {
     @FXML
     private TableView<Note> notesTable;
     @FXML
+    private TableColumn<Note, String> indexColumn;
+    @FXML
     private TableColumn<Note, String> textColumn;
     @FXML
     private TableColumn<Note, Double> usdtColumn;
@@ -42,6 +45,11 @@ public class MainController {
         uahColumn.setCellValueFactory(cellData -> cellData.getValue().uahAmountProperty().asObject());
         dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateObjectProperty());
         notesTable.setItems(notes);
+
+        indexColumn.setCellValueFactory(cellData -> {
+            int index = notes.indexOf(cellData.getValue()) + 1;
+            return new ReadOnlyStringWrapper(index + ")");
+                });
 
         notes.addAll(NoteStorage.loadNotes());
         notesTable.setItems(notes);

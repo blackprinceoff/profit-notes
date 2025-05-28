@@ -15,6 +15,7 @@
   <Button text="Видалити вибране" onAction="#onDeleteClicked"/>
   <TableView fx:id="notesTable">
     <columns>
+      <TableColumn fx:id="indexColumn" text="День"/>
       <TableColumn fx:id="textColumn" text="Кількість +"/>
       <TableColumn fx:id="usdtColumn" text="USDT"/>
       <TableColumn fx:id="uahColumn" text="UAH"/>
