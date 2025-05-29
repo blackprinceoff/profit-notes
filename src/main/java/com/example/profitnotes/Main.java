@@ -3,6 +3,7 @@ package com.example.profitnotes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,6 +14,7 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("/com/example/profitnotes/styles.css").toExternalForm());
 
         stage.setTitle("Прибуткові нотатки");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo.PNG")));
         stage.setScene(scene);
         stage.show();
     }
