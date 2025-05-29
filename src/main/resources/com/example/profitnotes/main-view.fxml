@@ -6,27 +6,33 @@
 
 <VBox spacing="10" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.profitnotes.controller.MainController">
+  <padding>
+    <Insets top="15" right="15" bottom="15" left="15"/>
+  </padding>
 
   <Label text="Курс:" fx:id="exchangeRateLabel"/>
 
-  <TextArea fx:id="noteTextArea" promptText="Кількість +"/>
-  <TextField fx:id="usdtField" promptText="Сума в USDT"/>
-  <DatePicker fx:id="datePicker" promptText="Оберіть дату"/>
+  <TextArea fx:id="noteTextArea" promptText="Кількість +" prefRowCount="2" prefWidth="300"/>
 
   <HBox spacing="10">
-    <Button fx:id="addButton" text="Додати" onAction="#onAddClicked"/>
-    <Button text="Видалити вибране" onAction="#onDeleteClicked"/>
+    <TextField fx:id="usdtField" promptText="Сума в USDT" prefWidth="140"/>
+    <DatePicker fx:id="datePicker" promptText="Оберіть дату" prefWidth="150"/>
+  </HBox>
+
+  <HBox spacing="10">
+    <Button fx:id="addButton" text="Додати" onAction="#onAddClicked" prefWidth="120"/>
+    <Button fx:id="deleteButton" text="Видалити вибране" onAction="#onDeleteClicked" prefWidth="180" styleClass="delete-button"/>
   </HBox>
 
   <TableView fx:id="notesTable">
     <columns>
-      <TableColumn fx:id="indexColumn" text="День"/>
-      <TableColumn fx:id="textColumn" text="Кількість +"/>
-      <TableColumn fx:id="usdtColumn" text="USDT"/>
-      <TableColumn fx:id="uahColumn" text="UAH"/>
-      <TableColumn fx:id="dateColumn" text="Дата"/>
+      <TableColumn fx:id="indexColumn" text="День" prefWidth="60"/>
+      <TableColumn fx:id="textColumn" text="Кількість +" prefWidth="80"/>
+      <TableColumn fx:id="usdtColumn" text="USDT" prefWidth="100"/>
+      <TableColumn fx:id="uahColumn" text="UAH" prefWidth="100"/>
+      <TableColumn fx:id="dateColumn" text="Дата" prefWidth="120"/>
     </columns>
   </TableView>
 
-  <Label fx:id="totalProfitLabel" text="Загалом: 0 USDT / 0 UAH"/>
+  <Label fx:id="totalProfitLabel" text="Загалом: 0 USDT / 0 UAH" style="-fx-font-weight: bold;"/>
 </VBox>

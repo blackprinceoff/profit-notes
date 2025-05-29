@@ -10,6 +10,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/example/profitnotes/main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/example/profitnotes/styles.css").toExternalForm());
+
         stage.setTitle("Прибуткові нотатки");
         stage.setScene(scene);
         stage.show();

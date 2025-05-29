@@ -1,0 +1,318 @@
+/* ===== ЗАГАЛЬНІ СТИЛІ ===== */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #1e293b, #0f172a);
+    -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.vbox {
+    -fx-background-color: rgba(30, 41, 59, 0.9);
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(148, 163, 184, 0.2);
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0.3, 0, 5);
+}
+
+/* ===== ЛЕЙБЛИ ===== */
+.label {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+
+/* Курс валют */
+#exchangeRateLabel {
+    -fx-background-color: linear-gradient(to right, #374151, #4b5563);
+    -fx-background-radius: 12px;
+    -fx-padding: 12px 20px;
+    -fx-text-fill: #10b981;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-border-color: rgba(16, 185, 129, 0.3);
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+}
+
+/* Загальний прибуток */
+#totalProfitLabel {
+    -fx-background-color: linear-gradient(to right, #065f46, #047857);
+    -fx-background-radius: 15px;
+    -fx-padding: 18px 25px;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-color: rgba(16, 185, 129, 0.4);
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.3), 10, 0.5, 0, 2);
+}
+
+/* ===== ТЕКСТОВІ ПОЛЯ ===== */
+.text-field, .text-area {
+    -fx-background-color: rgba(17, 24, 39, 0.8);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(75, 85, 99, 0.6);
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 16px;
+    -fx-prompt-text-fill: #6b7280;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #10b981;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.3), 8, 0.3, 0, 0);
+}
+
+/* TextArea спеціальні стилі */
+#noteTextArea {
+    -fx-background-color: rgba(17, 24, 39, 0.8);
+    -fx-control-inner-background: rgba(17, 24, 39, 0.8);
+}
+
+#noteTextArea .content {
+    -fx-background-color: rgba(17, 24, 39, 0.8);
+}
+
+#noteTextArea .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#noteTextArea .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ===== DATE PICKER ===== */
+.date-picker {
+    -fx-background-color: rgba(17, 24, 39, 0.8);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(75, 85, 99, 0.6);
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+
+.date-picker:focused {
+    -fx-border-color: #10b981;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.3), 8, 0.3, 0, 0);
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #e2e8f0;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: rgba(55, 65, 81, 0.8);
+    -fx-background-radius: 0 8px 8px 0;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #9ca3af;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+}
+
+/* ===== КНОПКИ ===== */
+.button {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-padding: 12px 20px;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+}
+
+/* Кнопка "Додати" */
+#addButton {
+    -fx-background-color: linear-gradient(to bottom, #10b981, #059669);
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 8, 0.3, 0, 2);
+}
+
+#addButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #059669, #047857);
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.6), 12, 0.4, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+#addButton:pressed {
+    -fx-background-color: linear-gradient(to bottom, #047857, #065f46);
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+/* Кнопка "Видалити" через CSS класи */
+.delete-button {
+    -fx-background-color: linear-gradient(to bottom, #7f1d1d, #991b1b);
+    -fx-text-fill: #fecaca;
+    -fx-effect: dropshadow(gaussian, rgba(127, 29, 29, 0.6), 10, 0.4, 0, 2);
+    -fx-border-color: rgba(185, 28, 28, 0.3);
+    -fx-border-width: 1px;
+}
+
+.delete-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #991b1b, #b91c1c);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(153, 27, 27, 0.8), 15, 0.5, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.delete-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #b91c1c, #dc2626);
+    -fx-text-fill: white;
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+/* ===== ТАБЛИЦЯ ===== */
+.table-view {
+    -fx-background-color: rgba(17, 24, 39, 0.8);
+    -fx-background-radius: 15px;
+    -fx-border-color: rgba(148, 163, 184, 0.2);
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-table-cell-border-color: rgba(75, 85, 99, 0.3);
+}
+
+/* Заголовки колонок */
+.table-view .column-header {
+    -fx-background-color: linear-gradient(to bottom, #374151, #4b5563);
+    -fx-text-fill: #f3f4f6;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+    -fx-padding: 12px 8px;
+    -fx-border-color: rgba(75, 85, 99, 0.3);
+    -fx-border-width: 0 1px 1px 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #374151, #4b5563);
+    -fx-background-radius: 15px 15px 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #f3f4f6;
+    -fx-font-weight: 600;
+}
+
+/* Рядки таблиці */
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(75, 85, 99, 0.2);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgba(55, 65, 81, 0.4);
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+    -fx-border-color: rgba(16, 185, 129, 0.4);
+    -fx-border-width: 1px;
+}
+
+/* Комірки таблиці */
+.table-view .table-cell {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-padding: 10px 8px;
+    -fx-border-color: transparent;
+}
+
+/* Колонка з індексом */
+#indexColumn .table-cell {
+    -fx-text-fill: #9ca3af;
+    -fx-font-weight: 500;
+}
+
+/* Колонки з сумами */
+#usdtColumn .table-cell,
+#uahColumn .table-cell {
+    -fx-text-fill: #10b981;
+    -fx-font-weight: 600;
+}
+
+/* Колонка з датою */
+#dateColumn .table-cell {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 12px;
+}
+
+/* ===== СКРОЛ-БАРИ ===== */
+.scroll-bar {
+    -fx-background-color: rgba(55, 65, 81, 0.5);
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(107, 114, 128, 0.8);
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(156, 163, 175, 0.9);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: rgba(107, 114, 128, 0.6);
+}
+
+/* ===== АНІМАЦІЇ ТА ЕФЕКТИ ===== */
+.button,
+.text-field,
+.text-area,
+.date-picker {
+    -fx-cursor: hand;
+}
+
+/* Плавні переходи */
+* {
+    -fx-transition: all 0.2s ease;
+}
+
+/* ===== КОНТЕКСТНЕ МЕНЮ ===== */
+.context-menu {
+    -fx-background-color: rgba(30, 41, 59, 0.95);
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(148, 163, 184, 0.2);
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 15, 0.3, 0, 5);
+}
+
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e2e8f0;
+    -fx-padding: 8px 16px;
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+}
+
+/* ===== TOOLTIP ===== */
+.tooltip {
+    -fx-background-color: rgba(17, 24, 39, 0.95);
+    -fx-background-radius: 6px;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 2);
+}
