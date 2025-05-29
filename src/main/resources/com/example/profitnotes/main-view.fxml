@@ -16,7 +16,7 @@
 
   <HBox spacing="10">
     <TextField fx:id="usdtField" promptText="Сума в USDT" prefWidth="140"/>
-    <DatePicker fx:id="datePicker" promptText="Оберіть дату" prefWidth="150"/>
+    <DatePicker fx:id="datePicker" promptText="Оберіть дату" prefWidth="160"/>
   </HBox>
 
   <HBox spacing="10">
