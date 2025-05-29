@@ -27,4 +27,6 @@
       <TableColumn fx:id="dateColumn" text="Дата"/>
     </columns>
   </TableView>
+
+  <Label fx:id="totalProfitLabel" text="Загалом: 0 USDT / 0 UAH"/>
 </VBox>

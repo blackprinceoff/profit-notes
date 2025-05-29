@@ -35,6 +35,8 @@ public class MainController {
     private TableColumn<Note, Double> uahColumn;
     @FXML
     private TableColumn<Note, LocalDate> dateColumn;
+    @FXML
+    private Label totalProfitLabel;
 
     private final ObservableList<Note> notes = FXCollections.observableArrayList();
 
@@ -55,6 +57,7 @@ public class MainController {
         notesTable.setItems(notes);
 
         updateExchangeRateLabel();
+        updateTotalProfit();
     }
 
     @FXML
@@ -81,6 +84,8 @@ public class MainController {
         notes.add(note);
         NoteStorage.saveNotes(notes);
 
+        updateTotalProfit();
+
         noteTextArea.clear();
         usdtField.clear();
     }
@@ -91,6 +96,7 @@ public class MainController {
         if (selectedNote != null){
             notes.remove(selectedNote);
             NoteStorage.saveNotes(notes);
+            updateTotalProfit();
         } else {
             showAlert("Будь ласка, виберіть запис для видалення.");
         }
@@ -99,6 +105,18 @@ public class MainController {
     public void updateExchangeRateLabel(){
         double rate = ExchangeRateService.getUsdtToUahRate();
         exchangeRateLabel.setText("Курс USDT -> UAH: " + rate);
+    }
+
+    public void updateTotalProfit(){
+        double totalUsdt = 0;
+        double totalUah = 0;
+
+        for (Note note : notes){
+            totalUsdt += note.getUsdtAmount();
+            totalUah += note.getUahAmount();
+        }
+
+        totalProfitLabel.setText(String.format("Загалом: %.2f USDT / %.2f UAH", totalUsdt, totalUah));
     }
 
     public void showAlert(String msg){
