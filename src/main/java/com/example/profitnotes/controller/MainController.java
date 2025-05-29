@@ -48,6 +48,30 @@ public class MainController {
         dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateObjectProperty());
         notesTable.setItems(notes);
 
+        usdtColumn.setCellFactory(column -> new TableCell<>(){
+            @Override
+            protected void updateItem(Double item, boolean empty){
+                super.updateItem(item, empty);
+                if (empty || item == null){
+                    setText(null);
+                } else {
+                    setText(String.format("%.6f", item));
+                }
+            }
+        });
+
+        uahColumn.setCellFactory(column -> new TableCell<>(){
+            @Override
+            protected void updateItem(Double item, boolean empty){
+                super.updateItem(item, empty);
+                if (empty || item == null){
+                    setText(null);
+                } else {
+                    setText(String.format("%.6f", item));
+                }
+            }
+        });
+
         indexColumn.setCellValueFactory(cellData -> {
             int index = notes.indexOf(cellData.getValue()) + 1;
             return new ReadOnlyStringWrapper(index + ")");
