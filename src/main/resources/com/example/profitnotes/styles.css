@@ -173,6 +173,110 @@
     -fx-scale-x: 0.98;
 }
 
+/* ===== COMBOBOX СТИЛІ ===== */
+.combo-box {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+}
+
+.combo-box .cell {
+    -fx-text-fill: #ffffff; /* Білий текст у вибраному елементі */
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #ffffff; /* Якщо ComboBox не editable — це ключовий стиль */
+}
+
+.combo-box:hover {
+    -fx-background-color: #3b4a5c;
+    -fx-border-color: #64748b;
+}
+
+.combo-box:focused {
+    -fx-background-color: #3b4a5c;
+    -fx-border-color: #10b981;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 4, 0, 0, 0);
+}
+
+/* Стрілочка */
+.combo-box .arrow {
+    -fx-background-color: #e2e8f0;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+    -fx-scale-shape: true;
+    -fx-effect: null;
+}
+
+.combo-box:hover .arrow {
+    -fx-background-color: #f1f5f9;
+}
+
+/* Кнопка зі стрілочкою */
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 6 6 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0 8 0 8;
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Текстове поле */
+.combo-box .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #94a3b8;
+    -fx-padding: 8 12 8 12;
+}
+
+/* Випадаючий список */
+.combo-box-popup .list-view {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 4);
+    -fx-padding: 4;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e2e8f0;
+    -fx-padding: 8 12 8 12;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: rgba(16, 185, 129, 0.15);
+    -fx-text-fill: #f1f5f9;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+}
+
+/* Лейбл поруч */
+.combo-box-container Label {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+
 /* ===== ТАБЛИЦЯ ===== */
 .table-view {
     -fx-background-color: rgba(17, 24, 39, 0.8);

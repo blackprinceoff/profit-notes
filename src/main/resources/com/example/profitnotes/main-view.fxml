@@ -4,6 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <VBox spacing="10" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.profitnotes.controller.MainController">
   <padding>
@@ -23,6 +25,20 @@
     <Button fx:id="addButton" text="Додати" onAction="#onAddClicked" prefWidth="120"/>
     <Button fx:id="deleteButton" text="Видалити вибране" onAction="#onDeleteClicked" prefWidth="180" styleClass="delete-button"/>
   </HBox>
+
+  <HBox spacing="10" alignment="CENTER_LEFT">
+    <Label text="Період:"/>
+    <ComboBox fx:id="periodComboBox" prefWidth="160" onAction="#onPeriodChanged">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Усі"/>
+          <String fx:value="Останні 7 днів"/>
+          <String fx:value="Останні 30 днів"/>
+        </FXCollections>
+      </items>
+    </ComboBox>
+  </HBox>
+
 
   <TableView fx:id="notesTable">
     <columns>

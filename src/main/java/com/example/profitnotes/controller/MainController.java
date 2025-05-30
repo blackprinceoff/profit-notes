@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainController {
@@ -37,6 +39,11 @@ public class MainController {
     private TableColumn<Note, LocalDate> dateColumn;
     @FXML
     private Label totalProfitLabel;
+    @FXML
+    private ComboBox<String> periodComboBox;
+    // Повний список всіх нотаток
+    private ObservableList<Note> allNotes = FXCollections.observableArrayList();
+
 
     private final ObservableList<Note> notes = FXCollections.observableArrayList();
 
@@ -77,8 +84,13 @@ public class MainController {
             return new ReadOnlyStringWrapper(index + ")");
                 });
 
-        notes.addAll(NoteStorage.loadNotes());
+        allNotes.addAll(NoteStorage.loadNotes());
+        notes.setAll(allNotes);
         notesTable.setItems(notes);
+
+        // Заповнюємо комбобокс (можна перенести у FXML)
+        periodComboBox.setItems(FXCollections.observableArrayList("Усі записи", "Останні 7 днів", "Останні 30 днів"));
+        periodComboBox.setValue("Усі записи");
 
         updateExchangeRateLabel();
         updateTotalProfit();
@@ -106,12 +118,15 @@ public class MainController {
 
         Note note = new Note(text, usdt, uah, date);
         notes.add(note);
+        allNotes.add(note);
         NoteStorage.saveNotes(notes);
 
         updateTotalProfit();
 
         noteTextArea.clear();
         usdtField.clear();
+
+        onPeriodChanged();
     }
 
     @FXML
@@ -126,10 +141,39 @@ public class MainController {
         }
     }
 
+    @FXML
+    private void onPeriodChanged() {
+        String selectedPeriod = periodComboBox.getValue();
+        LocalDate now = LocalDate.now();
+
+        List<Note> filteredNotes = switch (selectedPeriod) {
+            case "Останні 7 днів" -> allNotes.stream()
+                    .filter(note -> note.getDate() != null && !note.getDate().isBefore(now.minusDays(7)))
+                    .toList();
+            case "Останні 30 днів" -> allNotes.stream()
+                    .filter(note -> note.getDate() != null && !note.getDate().isBefore(now.minusDays(30)))
+                    .toList();
+            default -> new ArrayList<>(allNotes);
+        };
+
+        notes.setAll(filteredNotes);
+        updateTotalProfit(filteredNotes);
+    }
+
+    public void updateTotalProfit(List<Note> currentNotes) {
+        double totalUsdt = currentNotes.stream().mapToDouble(Note::getUsdtAmount).sum();
+        double totalUah = currentNotes.stream().mapToDouble(Note::getUahAmount).sum();
+
+        totalProfitLabel.setText(String.format("Загалом: %.2f USDT / %.2f UAH", totalUsdt, totalUah));
+    }
+
+
+
     public void updateExchangeRateLabel(){
         double rate = ExchangeRateService.getUsdtToUahRate();
         exchangeRateLabel.setText("Курс USDT -> UAH: " + rate);
     }
+
 
     public void updateTotalProfit(){
         double totalUsdt = 0;
