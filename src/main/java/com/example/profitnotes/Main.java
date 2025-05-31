@@ -14,7 +14,7 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("/com/example/profitnotes/styles.css").toExternalForm());
 
         stage.setTitle("Profit Notes");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo.PNG")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo.png")));
         stage.setScene(scene);
         stage.show();
     }

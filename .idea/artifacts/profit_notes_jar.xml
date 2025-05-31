@@ -1,23 +1,21 @@
 <component name="ArtifactManager">
-  <artifact name="profit-notes:jar">
+  <artifact type="jar" name="profit-notes:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/profit_notes_jar</output-path>
-    <root id="root">
-      <element id="archive" name="profit-notes.jar">
-        <element id="module-output" name="profit-notes" />
-      </element>
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:21" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:21" />
-      <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.14.9" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:21" />
-      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.17.0" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:21" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:21" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:21" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:21" />
-      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:21" />
-      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.17.0" />
-      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.17.0" />
-      <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0" />
+    <root id="archive" name="profit-notes.jar">
+      <element id="module-output" name="profit-notes" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/21/javafx-fxml-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21/javafx-graphics-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21/javafx-controls-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.17.0/jackson-databind-2.17.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.0/jackson-datatype-jsr310-2.17.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21/javafx-controls-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.17.0/jackson-annotations-2.17.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.17.0/jackson-core-2.17.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/21/javafx-fxml-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/bytebuddy/byte-buddy/1.14.9/byte-buddy-1.14.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21/javafx-graphics-21.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
