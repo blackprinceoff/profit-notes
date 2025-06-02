@@ -59,6 +59,9 @@ public class MainController {
         dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateObjectProperty());
         notesTable.setItems(notes);
 
+        List<Note> updateNotes = NoteStorage.loadNotes();
+        Note.updateUahAmounts(updateNotes);
+
         usdtColumn.setCellFactory(column -> new TableCell<>(){
             @Override
             protected void updateItem(Double item, boolean empty){

@@ -1,8 +1,10 @@
 package com.example.profitnotes.model;
 
+import com.example.profitnotes.util.NoteStorage;
 import javafx.beans.property.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Note {
     private final StringProperty text = new SimpleStringProperty();
@@ -54,4 +56,13 @@ public class Note {
     public DoubleProperty usdtAmountProperty(){return usdtAmount;}
     public DoubleProperty uahAmountProperty(){return uahAmount;}
     public ObjectProperty<LocalDate> dateObjectProperty(){return date;}
+
+    public static void updateUahAmounts(List<Note> notes) {
+        double currentRate = ExchangeRateService.getUsdtToUahRate();
+        for (Note note : notes) {
+            double updatedUah = note.getUsdtAmount() * currentRate;
+            note.setUahAmount(updatedUah);
+        }
+        NoteStorage.saveNotes(notes); // зберегти оновлені значення у файл
+    }
 }
