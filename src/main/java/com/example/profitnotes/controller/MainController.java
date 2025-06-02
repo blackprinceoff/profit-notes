@@ -212,15 +212,40 @@ public class MainController {
     @FXML
     private void onPeriodChanged() {
         String selectedPeriod = periodComboBox.getValue();
-        LocalDate now = LocalDate.now();
 
         List<Note> filteredNotes = switch (selectedPeriod) {
-            case "Останні 7 днів" -> allNotes.stream()
-                    .filter(note -> note.getDate() != null && !note.getDate().isBefore(now.minusDays(7)))
-                    .toList();
-            case "Останні 30 днів" -> allNotes.stream()
-                    .filter(note -> note.getDate() != null && !note.getDate().isBefore(now.minusDays(30)))
-                    .toList();
+            case "Останні 7 днів" -> {
+                // Сортуємо всі записи за датою (найновіші спочатку), беремо перші 7, потім сортуємо навпаки
+                List<Note> sortedNotes = allNotes.stream()
+                        .filter(note -> note.getDate() != null)
+                        .sorted((n1, n2) -> n2.getDate().compareTo(n1.getDate()))
+                        .toList();
+
+                List<Note> lastSeven = sortedNotes.size() > 7 ?
+                        sortedNotes.subList(0, 7) :
+                        sortedNotes;
+
+                // Сортуємо знову, щоб найстаріший був зверху, а найновіший внизу
+                yield lastSeven.stream()
+                        .sorted((n1, n2) -> n1.getDate().compareTo(n2.getDate()))
+                        .toList();
+            }
+            case "Останні 30 днів" -> {
+                // Сортуємо всі записи за датою (найновіші спочатку), беремо перші 30, потім сортуємо навпаки
+                List<Note> sortedNotes = allNotes.stream()
+                        .filter(note -> note.getDate() != null)
+                        .sorted((n1, n2) -> n2.getDate().compareTo(n1.getDate()))
+                        .toList();
+
+                List<Note> lastThirty = sortedNotes.size() > 30 ?
+                        sortedNotes.subList(0, 30) :
+                        sortedNotes;
+
+                // Сортуємо знову, щоб найстаріший був зверху, а найновіший внизу
+                yield lastThirty.stream()
+                        .sorted((n1, n2) -> n1.getDate().compareTo(n2.getDate()))
+                        .toList();
+            }
             default -> new ArrayList<>(allNotes);
         };
 
