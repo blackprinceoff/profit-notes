@@ -153,7 +153,9 @@ public class MainController {
             Matcher existingMatcher = NOTE_PATTERN.matcher(noteToUpdate.getText());
             int currentCount = 0;
             if (existingMatcher.matches()) {
-                currentCount = Integer.parseInt(existingMatcher.group(1));
+                int parsedCount = Integer.parseInt(existingMatcher.group(1));
+                String existingSign = existingMatcher.group(2);
+                currentCount = existingSign.equals("+") ? parsedCount : -parsedCount;
             }
 
             // Оновлюємо кількість
@@ -257,7 +259,20 @@ public class MainController {
         double totalUsdt = currentNotes.stream().mapToDouble(Note::getUsdtAmount).sum();
         double totalUah = currentNotes.stream().mapToDouble(Note::getUahAmount).sum();
 
-        totalProfitLabel.setText(String.format("Загалом: %.2f USDT / %.2f UAH", totalUsdt, totalUah));
+        int totalCountPlus = currentNotes.stream()
+                .map(Note::getText)
+                .mapToInt(text -> {
+                    Matcher matcher = NOTE_PATTERN.matcher(text);
+                    if (matcher.matches()) {
+                        int count = Integer.parseInt(matcher.group(1));
+                        String sign = matcher.group(2);
+                        return sign.equals("+") ? count : -count;
+                    }
+                    return 0;
+                })
+                .sum();
+
+        totalProfitLabel.setText(String.format("Загалом: %.2f USDT / %.2f UAH | Кількість +: %d", totalUsdt, totalUah, totalCountPlus));
     }
 
     public void updateExchangeRateLabel(){
