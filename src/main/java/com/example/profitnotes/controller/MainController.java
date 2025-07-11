@@ -272,7 +272,20 @@ public class MainController {
                 })
                 .sum();
 
-        totalProfitLabel.setText(String.format("Загалом: %.2f USDT / %.2f UAH | Кількість +: %d", totalUsdt, totalUah, totalCountPlus));
+        long uniqueDays = currentNotes.stream()
+                .map(Note::getDate)
+                .distinct()
+                .count();
+
+        String avgPerDay = uniqueDays > 0
+                ? String.format(" (в середньому %.2f +/день)", (double) totalCountPlus / uniqueDays)
+                : "";
+
+        totalProfitLabel.setText(String.format(
+                "Загалом: %.2f USDT / %.2f UAH\nКількість +: %d (в середньому %.2f +/день)",
+                totalUsdt, totalUah, totalCountPlus,
+                uniqueDays > 0 ? (double) totalCountPlus / uniqueDays : 0.0
+        ));
     }
 
     public void updateExchangeRateLabel(){
