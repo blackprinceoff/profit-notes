@@ -13,7 +13,7 @@ public class ExchangeRateService {
             JsonNode root = mapper.readTree(response);
             return root.get("tether").get("uah").asDouble();
         } catch (Exception e){
-            return 40.0; // fallback rate
+            return 41.80; // fallback rate
         }
     }
 }
